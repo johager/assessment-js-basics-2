@@ -37,6 +37,11 @@ const cart = [
 
 // const summedPrice = cart.reduce(/* CALLBACK HERE */)
 
+// const summedPrice = cart.reduce((elem, acc) => acc + elem.price, cart[0].price)
+
+const summedPrice = cart.map(item => item.price).reduce((price, acc) => acc + price)
+
+console.log("summedPrice:", summedPrice)
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -55,7 +60,12 @@ const cart = [
 
 //CODE HERE
 
+function calcFinalPrice(cartTotal, couponValue, taxRate) {
+    return cartTotal * (1 + taxRate) - couponValue
+}
 
+console.log("calcFinalPrice(10, 0, 0.06):", calcFinalPrice(10, 0, 0.06))
+console.log("calcFinalPrice(10, 1 , 0.06):", calcFinalPrice(10, 1 , 0.06))
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -80,6 +90,16 @@ const cart = [
 /*
     TEXT ANSWER HERE
 
+    items - an array of item objects that the customer is buying
+    secondItem - something that the project manager hasn't specified yet
+    thirdItem - something that the project manager hasn't specified yet
+    fourthItem - something that the project manager hasn't specified yet
+
+    - An array of items is the only thing that's required on the cart page in order to show the items that are going to be purchased
+
+    - It sounds like you are asking for information required on the checkout page
+
+    - I'll answer the question as posed
 */
 
 /*
@@ -88,3 +108,29 @@ const cart = [
 */
 
 //CODE HERE
+
+class Customer {
+    constructor(items){
+        this.items = items
+        this.prop2 = ''
+        this.prop3 = ''
+        this.prop4 = ''
+    }
+}
+
+const customer1 = new Customer(cart)
+
+console.log("\ncustomer1:", customer1)
+
+// For the checkout page, it would be like the following
+
+class CustomerForCheckout extends Customer {
+    constructor(name, phone, items){
+        super(items)
+        this.name = name
+        this.phone = phone  // phone number
+        this.prop4 = prop4  // the secret information that the program manager wants
+    }
+}
+
+// the next step would be the payment page where payment information would be obtained

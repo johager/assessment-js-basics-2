@@ -23,7 +23,9 @@
 
 //CODE HERE
 
+const greetUser = (userName) => "Welcome back, " + userName
 
+// console.log(greetUser('Andrew'))
 
 
 
@@ -51,26 +53,43 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 
 //CODE HERE
 
+function canWeDeliver(toZip) {
+    return deliveryAreaZipCodes.includes(toZip)
+}
 
+// console.log("canWeDeliver true: ", canWeDeliver(85203))
+// console.log("canWeDeliver false: ", canWeDeliver(95203))
 
 /* 
-    Problem 2 Continued
+Problem 2 Continued
 
-    Now you're going to rewrite your function.
+Now you're going to rewrite your function.
 
-    If you wrote `canWeDeliver` using a loop of
-    some kind, write a new function (`canWeDeliverTwo`)
-    below, using the `includes` array method. 
-    Look it up on MDN if you're not sure how to use 
-    it. 
+If you wrote `canWeDeliver` using a loop of
+some kind, write a new function (`canWeDeliverTwo`)
+below, using the `includes` array method. 
+Look it up on MDN if you're not sure how to use 
+it. 
 
-    If you already used the `includes` method, 
-    write a new function using some sort of 
-    loop (for loop, higher order array method).
-    Name your new function `canWeDeliverTwo`.
+If you already used the `includes` method, 
+write a new function using some sort of 
+loop (for loop, higher order array method).
+Name your new function `canWeDeliverTwo`.
 */
 
 // CODE HERE
+
+function canWeDeliverTwo(toZip) {
+    for (let zip of deliveryAreaZipCodes) {
+        if (zip === toZip) {
+            return true
+        }
+    }
+    return false
+}
+
+// console.log("canWeDeliverTwo true: ", canWeDeliverTwo(85203))
+// console.log("canWeDeliverTwo false: ", canWeDeliverTwo(95203))
 
 
 //////////////////PROBLEM 3////////////////////
@@ -108,7 +127,8 @@ const deals = [
 
 //CODE HERE
 
-
+deals[0].title = deals[0].title.replace("15", "10")
+//console.log("10% off:", deals[0].title)
 
 /*
     The restaurant is going to continue its
@@ -124,3 +144,6 @@ const deals = [
 */
 
 //CODE HERE
+
+deals[1].desc = deals[1].desc.replace("March", "April").trim()
+//console.log("April:", deals[1].desc)

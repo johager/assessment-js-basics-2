@@ -32,6 +32,14 @@
 
 //CODE HERE
 
+const pizza = {
+    name: "Our Best",
+    price: 19.95,
+    category: "entree",
+    popularity: 90,
+    rating: 5,
+    tags: ["peperoni", "sausage", "carmelized onions", "green peppers"]
+}
 
 
 //////////////////PROBLEM 2////////////////////
@@ -44,36 +52,41 @@
 
 //CODE HERE
 
+console.log("popularity:", pizza.popularity)
 
 /*
-    Second, log the second tag in your pizza's
-    tags array.
-    Use a combination of dots and brackets to
-    get the value.
+Second, log the second tag in your pizza's
+tags array.
+Use a combination of dots and brackets to
+get the value.
 */
 
 //CODE HERE
 
+console.log("tag 2:", pizza.tags[1])
 
 /*
-    Third, destructure the price off of the
-    pizza object.
-    
-    Print the value of your new price variable.
+Third, destructure the price off of the
+pizza object.
+
+Print the value of your new price variable.
 */
 
 //CODE HERE
 
+console.log("price:", pizza.price)
 
 /*
-    Fourth, and last, destructure the category
-    property.
+Fourth, and last, destructure the category
+property.
 
-    Print the value of your category variable. 
+Print the value of your category variable. 
 */
 
 //CODE HERE
 
+let {category} = pizza
+console.log("category:", category)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -89,7 +102,49 @@
 
 //CODE HERE
 
+let foodArr = [
+    {
+        name: "Some Like It",
+        price: 17.95,
+        category: "entree",
+        popularity: 50,
+        rating: 5,
+        tags: ["peperoni", "mushroom"]
+    },
+    {
+        name: "Plain",
+        price: 15.95,
+        category: "entree",
+        popularity: 30,
+        rating: 5,
+        tags: ["cheese"]
+    },
+    {
+        name: "Abomination",
+        price: 18.95,
+        category: "entree",
+        popularity: 40,
+        rating: 5,
+        tags: ["ham", "pineapple"]
+    },
+    {
+        name: "Veggie",
+        price: 19.95,
+        category: "entree",
+        popularity: 60,
+        rating: 5,
+        tags: ["carmelized onions", "green peppers"]
+    },
+    {
+        name: "Gluten-Free",
+        price: 21.95,
+        category: "entree",
+        popularity: 10,
+        rating: 4,
+        tags: ["gluten  free", "cheese"]
+    }
 
+]
 
 //////////////////PROBLEM 4////////////////////
 /* 
@@ -107,6 +162,17 @@
 
 // const filteredFood = foodArr.filter(/* CALLBACK HERE */)
 
+const filterFactory = (tag) => {
+    return function(tags) {
+        return tags.includes(tag)
+    }
+}
+
+const filterOnCheese = filterFactory("cheese")
+
+const filteredFood = foodArr.filter(foodItem => filterOnCheese(foodItem.tags))
+
+console.log(filteredFood)
 
 
 //////////////////PROBLEM 5////////////////////
@@ -150,6 +216,16 @@
 
 //CODE HERE
 
+function filterByProperty(property, number, type) {
+    switch (type) {
+        case 'above':
+            return foodArr.filter(foodItem => foodItem[property] > number)
+        case 'below':
+            return foodArr.filter(foodItem => foodItem[property] < number)
+        default:
+            return []
+    }
+}
 
 /*
     Invoke the `filterByProperty` function passing
@@ -159,3 +235,9 @@
 */
 
 //CODE HERE
+
+console.log("\nfilterByProperty price > 18:", filterByProperty('price', 18, 'above'))
+console.log("\nfilterByProperty price < 18:", filterByProperty('price', 18, 'below'))
+
+console.log("\nfilterByProperty popularity > 50:", filterByProperty('popularity', 50, 'above'))
+console.log("\nfilterByProperty popularity < 50:", filterByProperty('popularity', 50, 'below'))

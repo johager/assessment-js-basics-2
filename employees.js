@@ -21,7 +21,16 @@
 
 //CODE HERE
 
+class Employee {
+    constructor(name, shifts) {
+        this.name = name
+        this.shifts = shifts
+    }
 
+    getSchedule() {
+        console.log(`${this.name} works on ${this.shifts}.`)
+    }
+}
 
 /*
     Create a new instance of your class.
@@ -35,6 +44,8 @@
 
 //CODE HERE
 
+const empOne = new Employee('Jess', 'weekday mornings, weekday afternoons')
+
 /*
     Call the `getSchedule` method on the
     `empOne` object.
@@ -42,6 +53,7 @@
 
 //CODE HERE
 
+empOne.getSchedule()
 
 /*
     Make a copy of the empOne object
@@ -57,7 +69,11 @@
 
 //CODE HERE
 
+const empTwo = {...empOne}
+empTwo.name = 'Nick'
 
+console.log("empTwo.name:", empTwo.name)
+console.log("empOne.name:", empOne.name)
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -84,7 +100,17 @@
 
 //CODE HERE
 
+class Manager extends Employee {
+    constructor(name, shifts, employees) {
+        super(name, shifts)
+        this.employees = employees
+    }
 
+    getEmployees() {
+        const employeesString = this.employees.map(employee => employee.name).join(', ')
+        console.log(`${this.name} manages ${employeesString}`)
+    }
+}
 
 /*
     Create a new instance of your class.
@@ -99,6 +125,11 @@
 
 //CODE HERE
 
+const cece = new Employee('Cece','some times')
+const schmidt = new Employee('Schmidt','other times')
+
+const winston = new Manager('Winston', '24/7', [cece, schmidt])
+
 
 /*
     Call the `getEmployees` method on the
@@ -106,6 +137,8 @@
 */
 
 //CODE HERE
+
+winston.getEmployees()
 
 /*
     Call the `addEmployee` method on the 
