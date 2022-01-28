@@ -37,9 +37,7 @@ const cart = [
 
 // const summedPrice = cart.reduce(/* CALLBACK HERE */)
 
-// const summedPrice = cart.reduce((elem, acc) => acc + elem.price, cart[0].price)
-
-const summedPrice = cart.map(item => item.price).reduce((price, acc) => acc + price)
+const summedPrice = cart.reduce((acc, item) => acc + item.price, cart[0].price)
 
 console.log("summedPrice:", summedPrice)
 
