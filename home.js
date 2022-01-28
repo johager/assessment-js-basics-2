@@ -54,7 +54,11 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 //CODE HERE
 
 function canWeDeliver(toZip) {
-    return deliveryAreaZipCodes.includes(toZip)
+    if (deliveryAreaZipCodes.includes(toZip)) {
+        return "You're in our delivery zone!"
+    } else {
+        return "Sorry, we can't deliver to that address."
+    }
 }
 
 // console.log("canWeDeliver true: ", canWeDeliver(85203))
@@ -82,10 +86,10 @@ Name your new function `canWeDeliverTwo`.
 function canWeDeliverTwo(toZip) {
     for (let zip of deliveryAreaZipCodes) {
         if (zip === toZip) {
-            return true
+            return "You're in our delivery zone!"
         }
     }
-    return false
+    return "Sorry, we can't deliver to that address."
 }
 
 // console.log("canWeDeliverTwo true: ", canWeDeliverTwo(85203))

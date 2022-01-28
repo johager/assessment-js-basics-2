@@ -74,7 +74,8 @@ Print the value of your new price variable.
 
 //CODE HERE
 
-console.log("price:", pizza.price)
+const { price} = pizza
+console.log("price:", price)
 
 /*
 Fourth, and last, destructure the category

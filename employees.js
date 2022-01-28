@@ -110,6 +110,10 @@ class Manager extends Employee {
         const employeesString = this.employees.map(employee => employee.name).join(', ')
         console.log(`${this.name} manages ${employeesString}`)
     }
+
+    addEmployee(employee) {
+        this.employees.push(employee)
+    }
 }
 
 /*
@@ -148,6 +152,9 @@ winston.getEmployees()
 
 //CODE HERE 
 
+const newEmployee = new Employee('NewEmployee', 'any time')
+winston.addEmployee(newEmployee)
+
 /*
     Call the `getEmployees` method on the
     `manager` object again to confirm 
@@ -155,3 +162,5 @@ winston.getEmployees()
 */
 
 //CODE HERE
+
+winston.getEmployees()
